@@ -1,0 +1,40 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+<th:block th:fragment="scripts_css">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</th:block>
+
+<th:block th:fragment="scripts_js">
+    <script th:src="@{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/1.14.4/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.1.3/js/bootstrap.min.js}"></script>
+</th:block>
+
+<th:block th:fragment="navigator">
+    <nav class="site-header sticky-top py-1">
+        <div class="container d-flex flex-column flex-md-row justify-content-between">
+
+            <a class="py-2 d-none d-md-inline-block" th:href="@{/}">Home</a>
+            <a class="py-2 d-none d-md-inline-block" th:href="@{/allProducts}">All Products</a>
+            <a class="py-2 d-none d-md-inline-block" th:href="@{/byPlayStyle}">Yoyos by play style</a>
+            <a class="py-2 d-none d-md-inline-block" th:href="@{/byCategory}">Yoyos by category</a>
+            <a sec:authorize="!isAuthenticated()" class="py-2 d-none d-md-inline-block" th:href="@{/login}">Login</a>
+            <a sec:authorize="isAuthenticated()" class="py-2 d-none d-md-inline-block" th:href="@{/user/profile}">Profile</a>
+            <a sec:authorize="isAuthenticated() && hasRole('ADMIN')" class="py-2 d-none d-md-inline-block" th:href="@{/admin}">AdminPanel</a>
+            <a sec:authorize="!isAuthenticated()" class="py-2 d-none d-md-inline-block" th:href="@{/register}">Register</a>
+            <a sec:authorize="isAuthenticated()" class="py-2 d-none d-md-inline-block" th:href="@{/logout}">Logout</a>
+            <a sec:authorize="isAuthenticated()" class="py-2 d-none d-md-inline-block" th:href="@{/user/cart}">Cart</a>
+        </div>
+    </nav>
+</th:block>
+
+<th:block th:fragment="messageBox">
+    <div class="message" th:if="${message}">
+       <b><p ALIGN=CENTER th:text="${message}"></p></b>
+    </div>
+</th:block>
+
+</html>

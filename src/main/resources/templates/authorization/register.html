@@ -1,0 +1,47 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <th:block th:include="template :: scripts_css"/>
+    <title>YOYO ALLEGRO - REGISTER</title>
+</head>
+
+        <th:block th:include="template :: navigator"/>
+        <th:block th:include="template :: messageBox "/>
+
+        <div class="container">
+            <!--<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">-->
+                <form th:href="@{/register}" method="post" th:object="${form}">
+                    <!--<form class="Login">-->
+                    <h1 class="h3 mb-3 font-weight-normal">Register</h1>
+                    <label for="username" class="sr-only">Username</label>
+                    <input type="text" name="username" id="username" th:field="*{username}" class="form-control" placeholder="Username" required autofocus>
+                    <label for="inputPassword" class="sr-only">Password</label>
+                    <input type="password" name="password" id="inputPassword" th:field="*{password}" class="form-control" placeholder="Password" required>
+                    <!--<div class="checkbox mb-3">-->
+                    <!--<label>-->
+                    <!--<input type="checkbox" value="remember-me"> Remember me-->
+                    <!--</label>-->
+                    <!--</div>-->
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+    <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+    </form>
+    </div>
+    </div>
+
+
+    <th:block th:include="template :: scripts_js"/>
+
+</body>
+</html> <P/>
+</h2>
+
+
+
+<th:block th:include="template :: scripts_js"/>
+
+</body>
+</html>
