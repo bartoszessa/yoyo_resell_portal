@@ -18,7 +18,7 @@ public class AuthorizationController {
     private AppUserService appUserService;
 
     @GetMapping("/login")
-    public String getLoginPage(){
+    public String getLoginPage() {
         return "authorization/login";
     }
 
@@ -33,8 +33,8 @@ public class AuthorizationController {
     @PostMapping("/register")
     public String sendRegister(Model model, RegisterUserRequest request) {
 
-       Optional<AppUser> appUserOptional = appUserService.register(request);
-        if(appUserOptional.isPresent()){
+        Optional<AppUser> appUserOptional = appUserService.register(request);
+        if (appUserOptional.isPresent()) {
             return "redirect:/login";
         }
         model.addAttribute("message", "Could not register, try different Username.");

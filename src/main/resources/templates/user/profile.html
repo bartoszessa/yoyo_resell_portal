@@ -12,10 +12,21 @@
 <body>
 <th:block th:include="template :: navigator"/>
 <h2>
-    <P ALIGN=CENTER> YOUR PROFILE <P/>
+    <p ALIGN=CENTER> YOUR PROFILE <p/>
 </h2>
 
-
+<form method="get" action="/user/addAuction">
+    <button type="submit" class="btn btn-lg btn-block btn-primary">Add new auction</button>
+</form>
+<form method="get" action="/user/ongoing">
+    <button type="submit" class="btn btn-lg btn-block btn-primary">My ongoing auctions</button>
+</form>
+<form method="get" action="/user/followed">
+    <button type="submit" class="btn btn-lg btn-block btn-primary">Followed offers</button>
+</form>
+<form method="get" action="/user/updateAddress">
+    <button type="submit" class="btn btn-lg btn-block btn-primary">Update address</button>
+</form>
 
 <th:block th:include="template :: scripts_js"/>
 

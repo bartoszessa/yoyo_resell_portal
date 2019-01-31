@@ -1,9 +1,13 @@
 package com.sa.java17gda.yoyo_allegro.component;
 
 import com.sa.java17gda.yoyo_allegro.model.AppUser;
+import com.sa.java17gda.yoyo_allegro.model.Auction;
 import com.sa.java17gda.yoyo_allegro.model.UserRole;
+import com.sa.java17gda.yoyo_allegro.model.YoyoCategory;
 import com.sa.java17gda.yoyo_allegro.repository.AppUserRepository;
+import com.sa.java17gda.yoyo_allegro.repository.AuctionRepository;
 import com.sa.java17gda.yoyo_allegro.repository.UserRoleRepository;
+import com.sa.java17gda.yoyo_allegro.repository.YoyoCategoryRepository;
 import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
@@ -29,10 +33,22 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
+    private AuctionRepository auctionRepository;
+
+    @Autowired
+    private YoyoCategoryRepository yoyoCategoryRepository;
+
+
+
+
+
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
         createInitialRoles();
         createInitialUsers();
+        createInitialCategories();
+        createCategoriesByPlayStyle();
                 
     }
 
@@ -75,5 +91,35 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
 
             userRoleRepository.save(role);
         }
+    }
+
+    private void createCategories (String category) {
+        Optional<YoyoCategory> searchedCategory = yoyoCategoryRepository.findByCategory(category);
+        if (!searchedCategory.isPresent()) {
+
+            YoyoCategory yoyoCategory = new YoyoCategory();
+            yoyoCategory.setCategory(category);
+
+            yoyoCategoryRepository.save(yoyoCategory);
+        }
+
+    }
+
+    private void createInitialCategories() {
+        createCategories("MATERIAL_PLASTIC");
+        createCategories("MATERIAL_METAL");
+        createCategories("CONDITION_NEW");
+        createCategories("CONDITION_USED");
+
+
+    }
+
+    private void createCategoriesByPlayStyle() {
+        createCategories("1A");
+        createCategories("3A");
+        createCategories("5A");
+        createCategories("2A");
+        createCategories("4A");
+
     }
 }

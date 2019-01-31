@@ -13,4 +13,10 @@ public class AppUserController {
         return "user/profile";
     }
 
+    @GetMapping(path = "/updateAddress")
+    public String updateAddress() {
+        return "updateAddressForm";
+    }
+
+
 }
